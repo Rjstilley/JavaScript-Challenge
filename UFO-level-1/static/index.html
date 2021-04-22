@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <link rel="stylesheet" href="static/css/style.css">
+    <script defer src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 
 <body>
@@ -16,12 +17,13 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">UFO Sightings
-                        <img class="nav-ufo" src="static/images/ufo.svg">
+                        <img class="nav-ufo"
+                            src="data:image/jpeg;base64,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" />
                     </a>
                 </div>
             </div>
         </nav>
-        <div class="hero text-center">
+        <div class=" hero text-center">
             <h1>UFO Sightings</h1>
             <p>The Truth is Out There</p>
         </div>
@@ -42,7 +44,8 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+                                    <button id="filter-btn" type="button" class="btn btn-default">Filter
+                                        Table</button>
                                 </form>
                             </div>
                         </div>
@@ -72,9 +75,10 @@
             <span class="bottom">UFO Sightings</span>
         </footer>
     </div>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="static/js/data.js"></script>
-    <script src="static/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
